@@ -1,0 +1,21 @@
+body {
+  padding-top: 20px;
+  background: linear-gradient(180deg, #799FFF 7.81%, rgba(121, 159, 255, 0.04) 100%);
+  background-attachment:fixed;
+}
+.card__img{
+  height: 300px;
+}
+.header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 0;
+  width: 100%;
+  &__search{
+    flex-grow: 1;
+  }
+  *:not(:last-child, :first-child){
+    margin-right: 15px;
+  }
+}
