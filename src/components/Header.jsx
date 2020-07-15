@@ -16,15 +16,15 @@ export default function Head() {
 
       <Input
         action={{
-          content:'Найти',
-          color:'blue'
+          content: "Найти",
+          color: "blue",
         }}
         placeholder="Поиск..."
         className="header__search"
       />
       <Button
         color="blue"
-        content="Корзина"
+        content={`Корзина`}
         icon={<Icon name="cart" />}
         label={{
           as: "a",
