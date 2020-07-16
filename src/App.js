@@ -17,17 +17,27 @@ function App() {
       case "price_high":
         return orderBy(books, "price", "desc");
       case "price_low":
-        return orderBy(books, "price", "asc")
+        return orderBy(books, "price", "asc");
       case "author":
         return orderBy(books, "author", "asc");
       default:
         return books;
     }
   };
+  const filterBooks = (books , searchQuery) => {
+    return books.filter(
+      (o) =>
+        o.title.toLowerCase().indexOf(searchQuery.toLowerCase()) >= 0 ||
+        o.author.toLowerCase().indexOf(searchQuery.toLowerCase()) >= 0
+    );
+  }
+  const searchBooks = (books, filterBy, searchQuery) => {
+    return sortBy(filterBooks(books, searchQuery) , filterBy)
+  }
   const dispatch = useDispatch();
   const { books, isReady } = useSelector(({ books, filter }) => {
     return {
-      books: sortBy(books.items, filter.filterBy),
+      books: books.items && searchBooks(books.items, filter.filterBy , filter.searchQuery),
       isReady: books.isReady,
     };
   });
@@ -46,7 +56,7 @@ function App() {
         <Card.Group itemsPerRow={4}>
           {!isReady
             ? "Загрузка..."
-            : books.map((book) => <BookCard key={book.id} {...book} />)}
+            : books.map((book) => <BookCard key={book.id} {...book}/>)}
         </Card.Group>
       </Container>
     </div>
