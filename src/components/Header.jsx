@@ -40,7 +40,7 @@ export default function Head() {
     dispatch(removeFromCard(id));
   }
   return (
-    <div className="header">
+    <div className="head">
       <div className="header__logo">
         <Header
           as="h2"
@@ -57,16 +57,18 @@ export default function Head() {
           color: "blue",
         }}
         placeholder="Поиск..."
-        className="header__search"
+        className="head__search"
         value={query}
         onChange={(e) => dispatch(setQuery(e.target.value))}
       />
       <Popup
-        on={["click"]}
+        wide='very'
+        hideOnScroll
+        on="click"
         trigger={
           <Button
             color="blue"
-            content={`Корзина(${cardBooks.length})`}
+            content={`Корзина ${cardBooks.length ? `(${cardBooks.length})` : ''}`}
             icon={<Icon name="cart" />}
             label={{
               as: "a",

@@ -2,7 +2,8 @@
 
 **Steck:**
 - React
-- Redux 
+- Redux
+- Lodash
 - Axios
 - json-server
 - Semantic-UI

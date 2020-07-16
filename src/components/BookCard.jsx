@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addToCard } from '../redux/action/card'
+import { addToCard } from "../redux/action/card";
 
 import { Card, Image, Button } from "semantic-ui-react";
 
@@ -23,10 +23,16 @@ export default function BookCard(book) {
         <Card.Meta>
           <span className="date">{author}</span>
         </Card.Meta>
-        <Card.Description>{price} руб.</Card.Description>
+        {/* <Card.Description>{price} руб.</Card.Description> */}
+        
       </Card.Content>
-      <Button as="button" color="blue" onClick={() => dispatch(addToCard(book))}>
-        Добавить в корзину{ countBook ? `(${countBook})` : null}
+      <Card.Content extra><p>{price} руб.</p></Card.Content>
+      <Button
+        as="button"
+        color="blue"
+        onClick={() => dispatch(addToCard(book))}
+      >
+        Добавить в корзину{countBook ? `(${countBook})` : null}
       </Button>
     </Card>
   );
