@@ -43,7 +43,7 @@ function App() {
   });
 
   React.useEffect(() => {
-    axios.get("http://localhost:3001/books").then(({ data }) => {
+    axios.get("/books").then(({ data }) => {
       dispatch(setBooks(data));
     });
   }, []);
